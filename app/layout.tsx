@@ -18,9 +18,6 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <Head>
-        <link rel='icon' href='/illuminate.svg' />
-      </Head>
       <html lang='en'>
         <body className={inter.className}>{children}</body>
       </html>
