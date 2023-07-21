@@ -2,25 +2,28 @@
 
 import * as z from 'zod';
 import axios from 'axios';
-import { useState } from 'react';
-import { MessageSquare } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { Code } from 'lucide-react';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import ReactMarkdown from 'react-markdown';
+import { useRouter } from 'next/navigation';
 import { ChatCompletionRequestMessage } from 'openai';
-import { cn } from '@/lib/utils';
-import { formSchema } from './constants';
 
-import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
+import { BotAvatar } from '@/components/bot-avatar';
 import { Heading } from '@/components/heading';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Empty } from '@/components/ui/empty';
+import { Input } from '@/components/ui/input';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
+import { cn } from '@/lib/utils';
 import { Loader } from '@/components/loader';
 import { UserAvatar } from '@/components/user-avatar';
-import { BotAvatar } from '@/components/bot-avatar';
+import { Empty } from '@/components/ui/empty';
 
-const ConversationPage = () => {
+import { formSchema } from './constants';
+
+const CodePage = () => {
   const router = useRouter();
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
@@ -41,15 +44,10 @@ const ConversationPage = () => {
       };
       const newMessages = [...messages, userMessage];
 
-      const response = await axios.post('/api/conversation', {
-        messages: newMessages,
-      });
-
+      const response = await axios.post('/api/code', { messages: newMessages });
       setMessages((current) => [...current, userMessage, response.data]);
-
-      form.reset();
     } catch (error: any) {
-      console.log(error);
+      toast.error('Something went wrong.');
     } finally {
       router.refresh();
     }
@@ -58,11 +56,11 @@ const ConversationPage = () => {
   return (
     <div>
       <Heading
-        title='Conversation'
-        description='Our most advanced conversation model.'
-        icon={MessageSquare}
-        iconColor='text-violet-500'
-        bgColor='bg-violet-500/10'
+        title='Code Generation'
+        description='Generate code using descriptive text.'
+        icon={Code}
+        iconColor='text-green-700'
+        bgColor='bg-green-700/10'
       />
       <div className='px-4 lg:px-8'>
         <div>
@@ -70,17 +68,17 @@ const ConversationPage = () => {
             <form
               onSubmit={form.handleSubmit(onSubmit)}
               className='
-                rounded-lg 
-                border 
-                w-full 
-                p-4 
-                px-3 
-                md:px-6 
-                focus-within:shadow-sm
-                grid
-                grid-cols-12
-                gap-2
-              '
+            rounded-lg
+            border
+            w-full
+            p-4
+            px-3
+            md:px-6
+            focus-withdin:shadow-sm
+            grid
+            grid-cols-12
+            gap-2
+            '
             >
               <FormField
                 name='prompt'
@@ -90,7 +88,7 @@ const ConversationPage = () => {
                       <Input
                         className='border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent'
                         disabled={isLoading}
-                        placeholder='What is the rarest blood type in humans?'
+                        placeholder='Write a code in C#  to sort an array of numbers in ascending order.'
                         {...field}
                       />
                     </FormControl>
@@ -98,7 +96,7 @@ const ConversationPage = () => {
                 )}
               />
               <Button
-                className='col-span-12 lg:col-span-2 w-full bg-[#111827] hover:bg-slate-950'
+                className='col-span-12 lg:col-span-2 w-full'
                 type='submit'
                 disabled={isLoading}
                 size='icon'
@@ -111,7 +109,7 @@ const ConversationPage = () => {
 
         <div className='space-y-4 mt-4'>
           {isLoading && (
-            <div className='flex items-center justify-center rounded-lg w-full bg-muted p-8'>
+            <div className='p-8 rounded-lg w-full flex items-center justify-center bg-muted'>
               <Loader />
             </div>
           )}
@@ -123,14 +121,28 @@ const ConversationPage = () => {
               <div
                 key={message.content}
                 className={cn(
-                  'flex items-start w-full p-8 gap-x-8 rounded-lg',
+                  'p-8 w-full flex items-start gap-x-8 rounded-lg',
                   message.role === 'user'
-                    ? 'border border-black/10 bg-white'
+                    ? 'bg-white border border-black/10'
                     : 'bg-muted'
                 )}
               >
                 {message.role === 'user' ? <UserAvatar /> : <BotAvatar />}
-                <p className='text-sm'>{message.content}</p>
+                <ReactMarkdown
+                  components={{
+                    pre: ({ node, ...props }) => (
+                      <div className='overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg'>
+                        <pre {...props} />
+                      </div>
+                    ),
+                    code: ({ node, ...props }) => (
+                      <code className='bg-black/10 rounded-lg p-1' {...props} />
+                    ),
+                  }}
+                  className='text-sm overflow-hidden leading-7'
+                >
+                  {message.content || ''}
+                </ReactMarkdown>
               </div>
             ))}
           </div>
@@ -140,4 +152,4 @@ const ConversationPage = () => {
   );
 };
 
-export default ConversationPage;
+export default CodePage;
