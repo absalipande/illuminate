@@ -1,5 +1,7 @@
 import { Code, ImageIcon, MessageSquare, Music, VideoIcon } from 'lucide-react';
 
+export const MAX_FREE_COUNTS = 5;
+
 export const tools = [
   {
     label: 'Conversation',
@@ -18,22 +20,22 @@ export const tools = [
   {
     label: 'Image Generation',
     icon: ImageIcon,
-    href: '/image',
     color: 'text-pink-700',
     bgColor: 'bg-pink-700/10',
+    href: '/image',
   },
   {
     label: 'Video Generation',
     icon: VideoIcon,
-    href: '/video',
     color: 'text-orange-700',
     bgColor: 'bg-orange-700/10',
+    href: '/video',
   },
   {
     label: 'Code Generation',
     icon: Code,
-    href: '/code',
     color: 'text-green-700',
     bgColor: 'bg-green-700/10',
+    href: '/code',
   },
 ];

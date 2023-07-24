@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { tools } from '@/constant';
+import { tools } from '@/constants';
 import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
