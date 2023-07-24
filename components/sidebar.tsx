@@ -65,9 +65,10 @@ const routes = [
 
 interface SidebarProps {
   apiLimitCount: number;
+  // isPro: boolean;
 }
 
-const Sidebar = ({ apiLimitCount = 0 }: SidebarProps) => {
+const Sidebar = ({ apiLimitCount = 0}: SidebarProps) => {
   const pathname = usePathname();
 
   return (
