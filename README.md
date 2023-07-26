@@ -1,5 +1,24 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+**Illuminate** is an AI-powered SaaS platform that helps businesses of all sizes automate tasks, improve decision-making, and create engaging content. Built with Next.js 13, TypeScript, Tailwind, Prisma, and Stripe, Illuminate is a powerful and flexible platform that can be used to solve a wide variety of business problems.
+
+Some of the key features of Illuminate include:
+
+* **Tailwind design:** Illuminate uses Tailwind CSS to create beautiful and responsive user interfaces.
+* **Toast notifications:** Illuminate uses toast notifications to provide users with feedback and alerts.
+* **Clerk authentication:** Illuminate uses Clerk to provide users with secure and easy-to-use authentication.
+* **Client form validation using react-hook-form:** Illuminate uses react-hook-form to provide users with robust and customizable form validation.
+* **Image, conversation, and code generation using OpenAI:** Illuminate uses OpenAI to generate images, conversations, and code.
+* **Music and video generation using Replicate:** Illuminate uses Replicate to generate music and video.
+
+Illuminate is a powerful and versatile platform that can be used to automate tasks, improve decision-making, and create engaging content. If you are looking for an AI-powered SaaS platform that can help you take your business to the next level, then Illuminate is the perfect solution for you.
+
+Here are some additional benefits of using Illuminate:
+
+* **Increased productivity:** Illuminate can help you automate tasks, freeing up your time to focus on more strategic work.
+* **Improved decision-making:** Illuminate can help you make better decisions by providing you with insights and recommendations based on your data.
+* **Engaging content:** Illuminate can help you create engaging content that will keep your customers coming back for more.
+
 ## Getting Started
 
 First, run the development server:
