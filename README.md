@@ -4,10 +4,18 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Some of the key features of Illuminate include:
 
+![image](https://github.com/absalipande/illuminate/assets/100668029/5bd9366d-be56-4d90-8ff3-0c271ef6895c)
+
 * **Tailwind design:** Illuminate uses Tailwind CSS to create beautiful and responsive user interfaces.
 * **Toast notifications:** Illuminate uses toast notifications to provide users with feedback and alerts.
+
+![image](https://github.com/absalipande/illuminate/assets/100668029/ab8b4899-f4ad-42ec-b6a1-79acbf0bf322)
+
 * **Clerk authentication:** Illuminate uses Clerk to provide users with secure and easy-to-use authentication.
 * **Client form validation using react-hook-form:** Illuminate uses react-hook-form to provide users with robust and customizable form validation.
+
+![image](https://github.com/absalipande/illuminate/assets/100668029/fe700c4b-e39c-4692-9d21-a95667c10e8c)
+
 * **Image, conversation, and code generation using OpenAI:** Illuminate uses OpenAI to generate images, conversations, and code.
 * **Music and video generation using Replicate:** Illuminate uses Replicate to generate music and video.
 
